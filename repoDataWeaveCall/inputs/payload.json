@@ -1,0 +1,54 @@
+
+
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "department": "Finance"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "department": "Marketing"
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "department": "Engineering"
+    }
+  ]
+}
+
+
+
+
+%dw 2.0
+output application/json
+---
+{
+  employeeDetails: payload.employees map ((employee) -> {
+    employeeId: employee.id,
+    fullName: employee.name,
+    team: employee.department
+  })
+}
+ {
+  "employeeDetails": [
+    {
+      "employeeId": 1,
+      "fullName": "John Doe",
+      "team": "Finance"
+    },
+    {
+      "employeeId": 2,
+      "fullName": "Jane Smith",
+      "team": "Marketing"
+    },
+    {
+      "employeeId": 3,
+      "fullName": "Bob Johnson",
+      "team": "Engineering"
+    }
+  ]
+}
